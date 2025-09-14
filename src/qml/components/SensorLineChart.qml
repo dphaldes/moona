@@ -7,44 +7,50 @@
 */
 
 import QtQuick
-import QtQuick.Layouts
+import QtQuick.Controls as Controls
 
 import org.kde.kirigami as Kirigami
-
 import org.kde.ksysguard.sensors as Sensors
-import org.kde.ksysguard.faces as Faces
-import org.kde.ksysguard.formatter as Formatter
 import org.kde.quickcharts as Charts
+import org.kde.quickcharts.controls as ChartControls
 
+// TODO: Hide bottom line from the chart
 Charts.LineChart {
     id: chart
 
-    required property Sensors.SensorDataModel sensorsModel
+    required property Sensors.SensorDataModel sensorModel
+    required property var highlightColor
     readonly property int historyAmount: 100 // TODO
 
+    opacity: 1
+    fillOpacity: 0.5
+    lineWidth: 0.5
+    smooth: true
+    stacked: false
     direction: Charts.XYChart.ZeroAtEnd
-
-    fillOpacity: 0.8
-    interpolate: true
 
     yRange {
         from: 0
         to: 100
     }
 
+    colorSource: Charts.SingleValueSource {
+        value: highlightColor
+    }
+
     Instantiator {
-        model: sensorsModel.sensors
+        model: chart.sensorModel.sensors
         delegate: Charts.HistoryProxySource {
             id: history
 
             source: Charts.ModelSource {
-                model: sensorsModel
+                model: sensorModel
                 column: index
                 roleName: "Value"
             }
 
-            interval: sensorsModel.updateRateLimit
-            maximumHistory: interval > 0 ? (chart.historyAmount * 1000) / interval : 0
+            interval: sensorModel.updateRateLimit
+            maximumHistory: 60
             fillMode: Charts.HistoryProxySource.FillFromEnd
         }
         onObjectAdded: (index, object) => {
@@ -55,14 +61,13 @@ Charts.LineChart {
         }
     }
 
-    nameSource: Charts.ModelSource {
-        roleName: "Name"
-        model: sensorsModel
-        indexColumns: true
-    }
-    shortNameSource: Charts.ModelSource {
-        roleName: "ShortName"
-        model: sensorsModel
-        indexColumns: true
+    Rectangle {
+        color: "transparent"
+        anchors.fill: parent
+        radius: 5
+        border {
+            color: chart.highlightColor
+            width: 2
+        }
     }
 }

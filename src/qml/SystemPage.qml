@@ -40,13 +40,15 @@ Item {
     Sensors.SensorDataModel {
         id: cpu_usage_model
         sensors: ["cpu/all/usage"]
-        updateRateLimit: 100
+        updateRateLimit: 1000
     }
 
     Moona.SensorLineChart {
         id: chart
-        sensorsModel: cpu_usage_model
+        sensorModel: cpu_usage_model
+        highlightColor: Kirigami.Theme.highlightColor
         width: 400
         height: 300
+        anchors.leftMargin: 20
     }
 }
