@@ -1,0 +1,14 @@
+*build*/
+*.kdev4
+.idea/
+.DS_Store
+.directory
+*.flatpak
+export/
+.cache/
+.clangd
+compile_commands.json
+# Windows
+local/
+prefix/
+.kateproject.build
