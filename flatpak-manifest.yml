@@ -1,0 +1,17 @@
+id: org.kde.moona
+runtime: org.kde.Platform
+runtime-version: '6.9'
+sdk: org.kde.Sdk
+command: moona
+modules:
+  - name: libksysguard
+    buildsystem: cmake-ninja
+    sources:
+      - type: git
+        url: https://invent.kde.org/plasma/libksysguard.git
+  - name: moona
+    buildsystem: cmake-ninja
+    sources: 
+      - type: dir
+        path: .
+    
