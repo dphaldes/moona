@@ -3,36 +3,36 @@ import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
 import org.kde.kirigamiaddons.delegates as Delegates
+import org.kde.ksysguard.sensors as Sensors
 
 Delegates.RoundedItemDelegate {
     id: delegate
 
     checkable: true
     padding: Kirigami.Units.largeSpacing
-    icon.height: 32
-    icon.width: 32
 
     Layout.fillWidth: true
 
-    contentItem: ColumnLayout {
+    property Sensors.SensorDataModel sensorModel
+
+    contentItem: RowLayout {
         id: root
 
         spacing: Kirigami.Units.smallSpacing
 
-        Kirigami.Icon {
-            id: iconItem
+        SensorLineChart {
+            id: chart
+            sensorModel: delegate.sensorModel
 
-            source: delegate.icon.name
-
-            Layout.alignment: Qt.AlignHCenter
-            Layout.preferredHeight: delegate.icon.width
-            Layout.preferredWidth: delegate.icon.height
+            implicitWidth: 150
+            implicitHeight: 100
+            highlightColor: Kirigami.Theme.highlightColor
         }
 
         Controls.Label {
             id: labelItem
-            text: delegate.text
 
+            text: delegate.text
             elide: Text.ElideRight
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter

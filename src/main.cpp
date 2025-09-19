@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
 
   QQmlApplicationEngine engine;
   engine.rootContext()->setContextObject(new KLocalizedContext(&engine));
-  engine.loadFromModule("org.kde.Moona", "Main");
+  engine.loadFromModule("org.kde.moona", "Main");
 
   return app.exec();
 }

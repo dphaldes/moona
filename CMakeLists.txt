@@ -43,5 +43,4 @@ set_package_properties(KSysGuard PROPERTIES
     URL https://invent.kde.org/plasma/libksysguard
 )
 
-
 add_subdirectory(src)
