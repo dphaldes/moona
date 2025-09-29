@@ -29,11 +29,12 @@ find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS
 )
 
 find_package(KF6 REQUIRED COMPONENTS
-    Kirigami
-    I18n
     CoreAddons
-    QQC2DesktopStyle
+    I18n
     IconThemes
+    Kirigami
+    QQC2DesktopStyle
+    Solid
 )
 
 find_package(KSysGuard 6.4)

@@ -1,10 +1,14 @@
 add_executable(moona)
 
-target_sources(moona PRIVATE
-  main.cpp
+ecm_add_qml_module(moona
+  URI org.kde.moona
 )
 
-ecm_add_qml_module(moona URI org.kde.moona)
+target_sources(moona PRIVATE
+  main.cpp
+  data/SolidAdapter.h
+  data/SolidAdapter.cpp
+)
 
 set_source_files_properties(qml/SensorData.qml PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
 
@@ -18,7 +22,6 @@ ecm_target_qml_sources(moona SOURCES
   qml/WorkInProgress.qml
 )
 
-
 target_link_libraries(moona PRIVATE
   Qt6::Quick
   Qt6::Qml
@@ -28,6 +31,7 @@ target_link_libraries(moona PRIVATE
   KF6::I18n
   KF6::CoreAddons
   KF6::IconThemes
-  KSysGuard::Sensors
-  KSysGuard::SensorFaces
+  KF6::Solid
+  # KSysGuard::Sensors
+  # KSysGuard::SensorFaces
 )
