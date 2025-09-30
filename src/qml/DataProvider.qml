@@ -22,4 +22,18 @@ Item {
     }
 
     readonly property string cpuName: SolidProvider.cpuName
+
+    readonly property Sensor memoryUsed: Sensor {
+        sensorId: "memory/physical/used"
+        updateRateLimit: 1000
+    }
+
+    readonly property Sensor memoryTotal: Sensor {
+        sensorId: "memory/physical/total" // doesnt really need to update
+    }
+
+    readonly property SensorDataModel memoryUsedModel: SensorDataModel {
+        sensors: ["memory/physical/used"]
+        updateRateLimit: 1000
+    }
 }

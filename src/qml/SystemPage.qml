@@ -21,6 +21,13 @@ Item {
                 checked: true
             }
 
+            SensorDelegate {
+                sensorModel: DataProvider.memoryUsedModel
+                type: i18n("Memory")
+                name: DataProvider.memoryUsed.formattedValue + " " + DataProvider.memoryTotal.formattedValue
+                extra: ""
+            }
+
             Item {
                 Layout.fillHeight: true
             }
