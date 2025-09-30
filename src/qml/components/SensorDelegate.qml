@@ -13,7 +13,10 @@ Delegates.RoundedItemDelegate {
 
     Layout.fillWidth: true
 
-    property Sensors.SensorDataModel sensorModel
+    required property Sensors.SensorDataModel sensorModel
+    required property string type
+    required property string name
+    required property string extra
 
     contentItem: RowLayout {
         id: root
@@ -24,22 +27,35 @@ Delegates.RoundedItemDelegate {
             id: chart
             sensorModel: delegate.sensorModel
 
-            implicitWidth: 150
-            implicitHeight: 100
+            implicitWidth: 120
+            implicitHeight: 80
             highlightColor: Kirigami.Theme.highlightColor
         }
 
-        Controls.Label {
-            id: labelItem
+        ColumnLayout {
+            Controls.Label {
+                id: type
 
-            text: delegate.text
-            elide: Text.ElideRight
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            leftPadding: delegate.mirrored ? (delegate.indicator ? delegate.indicator.width : 0) + delegate.spacing : 0
-            rightPadding: !delegate.mirrored ? (delegate.indicator ? delegate.indicator.width : 0) + delegate.spacing : 0
+                text: delegate.type
+                elide: Text.ElideRight
+                Layout.fillWidth: true
+            }
 
-            Layout.fillWidth: true
+            Controls.Label {
+                id: name
+
+                text: delegate.name
+                elide: Text.ElideRight
+                Layout.fillWidth: true
+            }
+
+            Controls.Label {
+                id: extra
+
+                text: delegate.extra
+                elide: Text.ElideRight
+                Layout.fillWidth: true
+            }
         }
     }
 }

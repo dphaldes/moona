@@ -10,12 +10,15 @@ Item {
         anchors.fill: parent
 
         ColumnLayout {
-            Layout.maximumWidth: Kirigami.Units.gridUnit * 12
+            Layout.maximumWidth: Kirigami.Units.gridUnit * 16
             spacing: 0
 
             SensorDelegate {
-                sensorModel: DataProvider.cpu_all_usage
-                text: DataProvider.cpu_name
+                sensorModel: DataProvider.cpuAllUsageModel
+                type: i18n("CPU")
+                name: DataProvider.cpuName
+                extra: DataProvider.cpuAllUsage.formattedValue + " (" + DataProvider.cpuAllTemp.formattedValue + ")"
+                checked: true
             }
 
             Item {

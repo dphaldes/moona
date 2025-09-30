@@ -16,7 +16,7 @@ Kirigami.ApplicationWindow {
         id: drawer
 
         modal: false
-        width: Kirigami.Units.gridUnit * 10
+        width: Kirigami.Units.gridUnit * 8
         handleVisible: false
 
         Controls.ButtonGroup {

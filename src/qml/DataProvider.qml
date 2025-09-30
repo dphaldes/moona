@@ -1,15 +1,25 @@
 pragma Singleton
 
 import QtQuick
-import org.kde.ksysguard.sensors as Sensors
+import org.kde.ksysguard.sensors
 
 Item {
     id: sensors
 
-    readonly property Sensors.SensorDataModel cpu_all_usage: Sensors.SensorDataModel {
-        sensors: ["cpu/all/usage"]
-        updateRateLimit: 500
+    readonly property Sensor cpuAllUsage: Sensor {
+        sensorId: "cpu/all/usage"
+        updateRateLimit: 1000
     }
 
-    readonly property string cpu_name: SolidProvider.cpuName
+    readonly property SensorDataModel cpuAllUsageModel: SensorDataModel {
+        sensors: ["cpu/all/usage"]
+        updateRateLimit: 1000
+    }
+
+    readonly property Sensor cpuAllTemp: Sensor {
+        sensorId: "cpu/all/averageTemperature"
+        updateRateLimit: 1000
+    }
+
+    readonly property string cpuName: SolidProvider.cpuName
 }
