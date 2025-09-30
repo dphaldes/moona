@@ -6,16 +6,16 @@ ecm_add_qml_module(moona
 
 target_sources(moona PRIVATE
   main.cpp
-  data/SolidAdapter.h
-  data/SolidAdapter.cpp
+  SolidProvider.h
+  SolidProvider.cpp
 )
 
-set_source_files_properties(qml/SensorData.qml PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
+set_source_files_properties(qml/DataProvider.qml PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
 
 ecm_target_qml_sources(moona SOURCES
   qml/Main.qml
-  qml/SensorData.qml
   qml/SystemPage.qml
+  qml/DataProvider.qml
   qml/components/IconDelegate.qml
   qml/components/SensorDelegate.qml
   qml/components/SensorLineChart.qml

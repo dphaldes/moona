@@ -14,8 +14,8 @@ Item {
             spacing: 0
 
             SensorDelegate {
-                sensorModel: SensorData.cpu_all_usage
-                text: "CPU"
+                sensorModel: DataProvider.cpu_all_usage
+                text: DataProvider.cpu_name
             }
 
             Item {

@@ -1,7 +1,6 @@
 pragma Singleton
 
 import QtQuick
-import org.kde.solid as Solid
 import org.kde.ksysguard.sensors as Sensors
 
 Item {
@@ -12,5 +11,5 @@ Item {
         updateRateLimit: 500
     }
 
-    readonly property string cpu_name: SolidAdapter.cpuName
+    readonly property string cpu_name: SolidProvider.cpuName
 }

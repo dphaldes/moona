@@ -1,13 +1,10 @@
-#include "SolidAdapter.h"
+#include "SolidProvider.h"
 #include <QObject>
-
 #include <Solid/Device>
 #include <Solid/DeviceNotifier>
 #include <Solid/Processor>
 
-SolidAdapter::SolidAdapter(QObject *parent) : QObject(parent) {}
-
-auto SolidAdapter::getCpuName() -> QString {
+auto SolidProvider::cpuName() -> QString {
   const auto devices =
       Solid::Device::listFromType(Solid::DeviceInterface::Processor);
 
