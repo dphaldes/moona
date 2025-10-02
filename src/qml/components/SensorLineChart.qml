@@ -7,12 +7,9 @@
 */
 
 import QtQuick
-import QtQuick.Controls as Controls
 
-import org.kde.kirigami as Kirigami
 import org.kde.ksysguard.sensors as Sensors
 import org.kde.quickcharts as Charts
-import org.kde.quickcharts.controls as ChartControls
 
 // TODO: Hide bottom line from the chart
 Charts.LineChart {
@@ -20,9 +17,8 @@ Charts.LineChart {
 
     required property Sensors.SensorDataModel sensorModel
     required property var highlightColor
-    readonly property int historyAmount: 100 // TODO
+    readonly property int historyAmount: 60 // TODO
 
-    opacity: 1
     fillOpacity: 0.5
     lineWidth: 0.5
     smooth: true
@@ -67,7 +63,7 @@ Charts.LineChart {
         radius: 5
         border {
             color: chart.highlightColor
-            width: 2
+            width: 1
         }
     }
 }

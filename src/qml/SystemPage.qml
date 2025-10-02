@@ -6,8 +6,14 @@ import org.kde.kirigami as Kirigami
 Item {
     id: systempage
 
+    property var stackIndex: 0
+
     RowLayout {
         anchors.fill: parent
+
+        Controls.ButtonGroup {
+            id: buttonGroup
+        }
 
         ColumnLayout {
             Layout.maximumWidth: Kirigami.Units.gridUnit * 16
@@ -19,6 +25,8 @@ Item {
                 name: DataProvider.cpuName
                 extra: DataProvider.cpuAllUsage.formattedValue + " (" + DataProvider.cpuAllTemp.formattedValue + ")"
                 checked: true
+                Controls.ButtonGroup.group: buttonGroup
+                onPressed: systempage.stackIndex = 0
             }
 
             SensorDelegate {
@@ -26,6 +34,8 @@ Item {
                 type: i18n("Memory")
                 name: DataProvider.memoryUsed.formattedValue + " " + DataProvider.memoryTotal.formattedValue
                 extra: ""
+                Controls.ButtonGroup.group: buttonGroup
+                onPressed: systempage.stackIndex = 1
             }
 
             Item {
@@ -33,10 +43,16 @@ Item {
             }
         }
 
-        Rectangle {
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-            color: "red"
+        StackLayout {
+            currentIndex: systempage.stackIndex
+
+            CPUView {}
+
+            Rectangle {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                color: "aqua"
+            }
         }
     }
 }

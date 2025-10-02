@@ -52,11 +52,15 @@ Kirigami.ApplicationWindow {
         }
     }
 
-    StackLayout {
+    Kirigami.Page {
         anchors.fill: parent
-        currentIndex: appWindow.stackIndex
 
-        SystemPage {}
-        WorkInProgress {}
+        StackLayout {
+            anchors.fill: parent
+            currentIndex: appWindow.stackIndex
+
+            SystemPage {}
+            WorkInProgress {}
+        }
     }
 }

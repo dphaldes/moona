@@ -8,7 +8,6 @@ Delegates.RoundedItemDelegate {
     id: delegate
 
     checkable: true
-    padding: Kirigami.Units.largeSpacing
     icon.height: 32
     icon.width: 32
 
@@ -36,8 +35,6 @@ Delegates.RoundedItemDelegate {
             elide: Text.ElideRight
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
-            leftPadding: delegate.mirrored ? (delegate.indicator ? delegate.indicator.width : 0) + delegate.spacing : 0
-            rightPadding: !delegate.mirrored ? (delegate.indicator ? delegate.indicator.width : 0) + delegate.spacing : 0
 
             Layout.fillWidth: true
         }

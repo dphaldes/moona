@@ -16,10 +16,11 @@ ecm_target_qml_sources(moona SOURCES
   qml/Main.qml
   qml/SystemPage.qml
   qml/DataProvider.qml
+  qml/WorkInProgress.qml
+  qml/views/CPUView.qml
   qml/components/IconDelegate.qml
   qml/components/SensorDelegate.qml
   qml/components/SensorLineChart.qml
-  qml/WorkInProgress.qml
 )
 
 target_link_libraries(moona PRIVATE
