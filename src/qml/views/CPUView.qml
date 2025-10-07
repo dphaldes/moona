@@ -1,12 +1,14 @@
 import QtQuick
 import QtQuick.Layouts
-
+import QtQuick.Controls as Controls
 import org.kde.kirigami as Kirigami
-import org.kde.quickcharts as Charts
 import org.kde.ksysguard.sensors as Sensors
+import org.kde.quickcharts as Charts
+import org.kde.quickcharts.controls as Charts
 
 Item {
     id: cpuView
+
     Layout.fillWidth: true
     Layout.fillHeight: true
 
@@ -15,7 +17,7 @@ Item {
 
         RowLayout {
             Kirigami.Heading {
-                text: "CPU"
+                text: i18n("CPU")
                 level: 1
                 type: Kirigami.Heading.Type.Primary
                 font.pointSize: Kirigami.Theme.defaultFont.pointSize * 2
@@ -34,57 +36,81 @@ Item {
         Charts.LineChart {
             id: chart
 
+            property Sensors.SensorDataModel sensorModel: DataProvider.cpuAllUsageModel
+
             fillOpacity: 0.5
             lineWidth: 1
             smooth: true
             stacked: false
             direction: Charts.XYChart.ZeroAtEnd
+            yRange.from: 0
+            yRange.to: 100
 
             Layout.fillWidth: true
             Layout.fillHeight: true
+            implicitHeight: 200
 
-            property Sensors.SensorDataModel model: DataProvider.cpuAllUsageModel
+            valueSources: [
+                Charts.HistoryProxySource {
+                    interval: chart.sensorModel.updateRateLimit
+                    maximumHistory: 60
+                    fillMode: Charts.HistoryProxySource.FillFromEnd
 
-            yRange {
-                from: 0
-                to: 100
-            }
+                    source: Charts.ModelSource {
+                        model: chart.sensorModel
+                        roleName: "Value"
+                    }
+                }
+            ]
 
             colorSource: Charts.SingleValueSource {
                 value: Kirigami.Theme.highlightColor
             }
 
-            Instantiator {
-                model: chart.model.sensors
-                delegate: Charts.HistoryProxySource {
-                    id: history
+            Charts.GridLines {
+                anchors.fill: parent
+                direction: Charts.GridLines.Horizontal
+                major.visible: false
+                minor.color: Kirigami.Theme.alternateBackgroundColor
+                minor.count: 5
+            }
 
-                    source: Charts.ModelSource {
-                        model: model
-                        column: index
-                        roleName: "Value"
-                    }
-
-                    interval: chart.model.updateRateLimit
-                    maximumHistory: 60
-                    fillMode: Charts.HistoryProxySource.FillFromEnd
-                }
-                onObjectAdded: (index, object) => {
-                    chart.insertValueSource(index, object);
-                }
-                onObjectRemoved: (index, object) => {
-                    chart.removeValueSource(object);
-                }
+            Charts.GridLines {
+                anchors.fill: parent
+                direction: Charts.GridLines.Vertical
+                major.visible: false
+                minor.color: Kirigami.Theme.alternateBackgroundColor
+                minor.count: 5
             }
 
             Rectangle {
                 color: "transparent"
                 anchors.fill: parent
                 radius: 5
+
                 border {
                     color: Kirigami.Theme.highlightColor
                     width: 1
                 }
+            }
+        }
+
+        ColumnLayout {
+            Layout.fillHeight: true
+
+            RowLayout {
+                Kirigami.Heading {
+                    text: i18n("Utilization")
+                    level: 4
+                }
+
+                Controls.Label {
+                    text: DataProvider.cpuAllUsage.formattedValue
+                }
+            }
+
+            Item {
+                Layout.fillHeight: true
             }
         }
     }

@@ -31,31 +31,21 @@ Charts.LineChart {
     }
 
     colorSource: Charts.SingleValueSource {
-        value: highlightColor
+        value: chart.highlightColor
     }
 
-    Instantiator {
-        model: chart.sensorModel.sensors
-        delegate: Charts.HistoryProxySource {
-            id: history
-
-            source: Charts.ModelSource {
-                model: sensorModel
-                column: index
-                roleName: "Value"
-            }
-
-            interval: sensorModel.updateRateLimit
+    valueSources: [
+        Charts.HistoryProxySource {
+            interval: chart.sensorModel.updateRateLimit
             maximumHistory: 60
             fillMode: Charts.HistoryProxySource.FillFromEnd
+
+            source: Charts.ModelSource {
+                model: chart.sensorModel
+                roleName: "Value"
+            }
         }
-        onObjectAdded: (index, object) => {
-            chart.insertValueSource(index, object);
-        }
-        onObjectRemoved: (index, object) => {
-            chart.removeValueSource(object);
-        }
-    }
+    ]
 
     Rectangle {
         color: "transparent"
