@@ -1,6 +1,6 @@
 id: org.kde.moona
 runtime: org.kde.Platform
-runtime-version: '6.9'
+runtime-version: "6.9"
 sdk: org.kde.Sdk
 command: moona
 modules:
@@ -9,9 +9,23 @@ modules:
     sources:
       - type: git
         url: https://invent.kde.org/plasma/libksysguard.git
+    modules:
+      - name: libnl
+        buildsystem: autotools
+        sources:
+          - type: git
+            url: https://github.com/thom311/libnl.git
+            tag: libnl3_11_0
+      - name: libsensors
+        buildsystem: simple
+        build-commands:
+          - make -j$FLATPAK_BUILDER_N_JOBS PREFIX=/app install
+        sources:
+          - type: git
+            url: https://github.com/lm-sensors/lm-sensors.git
+            tag: V3-6-0
   - name: moona
     buildsystem: cmake-ninja
-    sources: 
+    sources:
       - type: dir
         path: .
-    
