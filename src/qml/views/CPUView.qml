@@ -3,6 +3,7 @@ import QtQuick.Layouts
 import QtQuick.Controls as Controls
 import org.kde.kirigami as Kirigami
 import org.kde.ksysguard.sensors as Sensors
+import org.kde.ksysguard.formatter
 import org.kde.quickcharts as Charts
 import org.kde.quickcharts.controls as Charts
 
@@ -68,6 +69,7 @@ Item {
             }
 
             Charts.GridLines {
+                z: -1
                 anchors.fill: parent
                 direction: Charts.GridLines.Horizontal
                 major.visible: false
@@ -76,6 +78,7 @@ Item {
             }
 
             Charts.GridLines {
+                z: -1
                 anchors.fill: parent
                 direction: Charts.GridLines.Vertical
                 major.visible: false
@@ -84,6 +87,7 @@ Item {
             }
 
             Rectangle {
+                z: 1
                 color: "transparent"
                 anchors.fill: parent
                 radius: 5
@@ -99,13 +103,26 @@ Item {
             Layout.fillHeight: true
 
             RowLayout {
-                Kirigami.Heading {
-                    text: i18n("Utilization")
-                    level: 4
+                ColumnLayout {
+                    Kirigami.Heading {
+                        text: i18n("Utilization")
+                        level: 2
+                    }
+
+                    Controls.Label {
+                        text: DataProvider.cpuAllUsage.formattedValue
+                    }
                 }
 
-                Controls.Label {
-                    text: DataProvider.cpuAllUsage.formattedValue
+                ColumnLayout {
+                    Kirigami.Heading {
+                        text: i18n("Speed")
+                        level: 2
+                    }
+
+                    Controls.Label {
+                        text: DataProvider.cpuAllFrequency.formattedValue
+                    }
                 }
             }
 

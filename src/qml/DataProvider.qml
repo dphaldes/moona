@@ -16,6 +16,11 @@ Item {
         updateRateLimit: 1000
     }
 
+    readonly property Sensor cpuAllFrequency: Sensor {
+        sensorId: "cpu/all/averageFrequency"
+        updateRateLimit: 1000
+    }
+
     readonly property Sensor cpuAllTemp: Sensor {
         sensorId: "cpu/all/averageTemperature"
         updateRateLimit: 1000
