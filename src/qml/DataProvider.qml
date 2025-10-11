@@ -33,6 +33,16 @@ Item {
         updateRateLimit: 1000
     }
 
+    readonly property Sensor memoryApplication: Sensor {
+        sensorId: "memory/physical/application"
+        updateRateLimit: 1000
+    }
+
+    readonly property Sensor memoryCache: Sensor {
+        sensorId: "memory/physical/cache"
+        updateRateLimit: 1000
+    }
+
     readonly property Sensor memoryTotal: Sensor {
         sensorId: "memory/physical/total" // doesnt really need to update
     }

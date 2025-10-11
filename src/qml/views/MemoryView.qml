@@ -47,7 +47,7 @@ Item {
 
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                implicitHeight: 80
+                implicitHeight: 60
 
                 valueSources: [
                     Charts.HistoryProxySource {
@@ -155,6 +155,44 @@ Item {
                     }
                 }
             }
+
+            Rectangle {
+                color: "transparent"
+                radius: 5
+                implicitHeight: 40
+                Layout.fillWidth: true
+
+                border {
+                    color: Kirigami.Theme.highlightColor
+                    width: 1
+                }
+
+                RowLayout {
+                    spacing: 0
+                    anchors.fill: parent
+                    z: -1
+
+                    Rectangle {
+                        Layout.fillHeight: true
+                        Layout.preferredWidth: parent.width * (DataProvider.memoryApplication.value / DataProvider.memoryTotal.value)
+                        color: "red"
+                        opacity: 0.5
+                    }
+
+                    Rectangle {
+                        Layout.preferredWidth: parent.width * (DataProvider.memoryCache.value / DataProvider.memoryTotal.value)
+                        Layout.fillHeight: true
+
+                        color: "magenta"
+                        opacity: 0.5
+                    }
+
+                    Item {
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                    }
+                }
+            }
         }
 
         ColumnLayout {
@@ -168,7 +206,7 @@ Item {
                     }
 
                     Controls.Label {
-                        text: DataProvider.cpuAllUsage.formattedValue
+                        text: (DataProvider.memoryCache / DataProvider.memoryTotal)
                     }
                 }
 
