@@ -44,4 +44,11 @@ set_package_properties(KSysGuard PROPERTIES
     URL https://invent.kde.org/plasma/libksysguard
 )
 
+find_package(KSystemStats)
+set_package_properties(KSystemStats PROPERTIES
+    TYPE RUNTIME
+    DESCRIPTION "System Statistics Daemon"
+    URL https://invent.kde.org/plasma/ksystemstats
+)
+
 add_subdirectory(src)
