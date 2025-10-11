@@ -47,6 +47,7 @@ Item {
             currentIndex: systempage.stackIndex
 
             CPUView {}
+            MemoryView {}
 
             Rectangle {
                 Layout.fillWidth: true

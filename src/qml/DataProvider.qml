@@ -41,4 +41,9 @@ Item {
         sensors: ["memory/physical/used"]
         updateRateLimit: 1000
     }
+
+    readonly property SensorDataModel swapUsedModel: SensorDataModel {
+        sensors: ["swap/used"]
+        updateRateLimit: 1000
+    }
 }
