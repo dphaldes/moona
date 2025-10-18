@@ -43,6 +43,11 @@ Item {
         updateRateLimit: 1000
     }
 
+    readonly property Sensor memoryFree: Sensor {
+        sensorId: "memory/physical/free"
+        updateRateLimit: 1000
+    }
+
     readonly property Sensor memoryTotal: Sensor {
         sensorId: "memory/physical/total" // doesnt really need to update
     }
@@ -52,8 +57,17 @@ Item {
         updateRateLimit: 1000
     }
 
+    readonly property Sensor swapUsed: Sensor {
+        sensorId: "memory/swap/used"
+        updateRateLimit: 1000
+    }
+
+    readonly property Sensor swapTotal: Sensor {
+        sensorId: "memory/swap/total" // doesnt really need to update
+    }
+
     readonly property SensorDataModel swapUsedModel: SensorDataModel {
-        sensors: ["swap/used"]
+        sensors: ["memory/swap/used"]
         updateRateLimit: 1000
     }
 }

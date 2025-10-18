@@ -196,26 +196,58 @@ Item {
             Layout.fillHeight: true
 
             RowLayout {
-                ColumnLayout {
-                    Kirigami.Heading {
-                        text: i18n("Utilization")
-                        level: 2
-                    }
+                spacing: Kirigami.Units.largeSpacing
 
-                    Controls.Label {
-                        text: (DataProvider.memoryCache / DataProvider.memoryTotal)
-                    }
+                Kirigami.Heading {
+                    text: i18n("Physical")
+                    level: 3
                 }
 
-                ColumnLayout {
-                    Kirigami.Heading {
-                        text: i18n("Speed")
-                        level: 2
-                    }
+                Item {
+                    Layout.fillWidth: true
+                }
 
-                    Controls.Label {
-                        text: DataProvider.cpuAllFrequency.formattedValue
-                    }
+                Kirigami.TitleSubtitle {
+                    title: DataProvider.memoryApplication.formattedValue
+                    subtitle: i18n("Used")
+                }
+
+                Kirigami.TitleSubtitle {
+                    title: DataProvider.memoryTotal.formattedValue
+                    subtitle: i18n("Total")
+                }
+
+                Kirigami.TitleSubtitle {
+                    title: DataProvider.memoryCache.formattedValue
+                    subtitle: i18n("Cached")
+                }
+
+                Kirigami.TitleSubtitle {
+                    title: DataProvider.memoryFree.formattedValue
+                    subtitle: i18n("Free")
+                }
+            }
+
+            RowLayout {
+                spacing: Kirigami.Units.largeSpacing
+
+                Kirigami.Heading {
+                    text: i18n("Swap")
+                    level: 3
+                }
+
+                Item {
+                    Layout.fillWidth: true
+                }
+
+                Kirigami.TitleSubtitle {
+                    title: DataProvider.swapUsed.formattedValue
+                    subtitle: i18n("Used")
+                }
+
+                Kirigami.TitleSubtitle {
+                    title: DataProvider.swapTotal.formattedValue
+                    subtitle: i18n("Total")
                 }
             }
 

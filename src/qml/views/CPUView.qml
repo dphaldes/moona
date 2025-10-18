@@ -102,26 +102,16 @@ Item {
             Layout.fillHeight: true
 
             RowLayout {
-                ColumnLayout {
-                    Kirigami.Heading {
-                        text: i18n("Utilization")
-                        level: 2
-                    }
-
-                    Controls.Label {
-                        text: DataProvider.cpuAllUsage.formattedValue
-                    }
+                spacing: Kirigami.Units.largeSpacing
+                
+                Kirigami.TitleSubtitle {
+                    title: DataProvider.cpuAllUsage.formattedValue
+                    subtitle: i18n("Utilization")
                 }
 
-                ColumnLayout {
-                    Kirigami.Heading {
-                        text: i18n("Speed")
-                        level: 2
-                    }
-
-                    Controls.Label {
-                        text: DataProvider.cpuAllFrequency.formattedValue
-                    }
+                Kirigami.TitleSubtitle {
+                    title: DataProvider.cpuAllFrequency.formattedValue
+                    subtitle: i18n("Speed")
                 }
             }
 
