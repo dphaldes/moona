@@ -156,7 +156,7 @@ Item {
                 }
             }
 
-            Rectangle {
+            ClippedRectangle {
                 color: "transparent"
                 radius: 5
                 implicitHeight: 40
@@ -170,7 +170,6 @@ Item {
                 RowLayout {
                     spacing: 0
                     anchors.fill: parent
-                    z: -1
 
                     Rectangle {
                         Layout.fillHeight: true

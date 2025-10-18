@@ -19,6 +19,7 @@ ecm_target_qml_sources(moona SOURCES
   qml/WorkInProgress.qml
   qml/views/CPUView.qml
   qml/views/MemoryView.qml
+  qml/components/ClippedRectangle.qml
   qml/components/IconDelegate.qml
   qml/components/SensorDelegate.qml
   qml/components/SensorLineChart.qml
