@@ -35,15 +35,22 @@ Kirigami.ApplicationWindow {
                 onPressed: appWindow.stackIndex = 0
             }
             IconDelegate {
-                text: i18n("System")
-                icon.name: "speedometer"
+                text: i18n("Applications")
+                icon.name: "applications-all-symbolic"
                 Controls.ButtonGroup.group: drawerGroup
                 onPressed: appWindow.stackIndex = 1
             }
             IconDelegate {
-                text: i18n("System")
-                icon.name: "speedometer"
+                text: i18n("Processes")
+                icon.name: "view-process-system-symbolic"
                 Controls.ButtonGroup.group: drawerGroup
+                onPressed: appWindow.stackIndex = 2
+            }
+            IconDelegate {
+                text: i18n("Services")
+                icon.name: "emblem-system-symbolic"
+                Controls.ButtonGroup.group: drawerGroup
+                onPressed: appWindow.stackIndex = 3
             }
 
             Item {
@@ -52,15 +59,15 @@ Kirigami.ApplicationWindow {
         }
     }
 
-    Kirigami.Page {
+    StackLayout {
         anchors.fill: parent
+        anchors.margins: Kirigami.Units.gridUnit
 
-        StackLayout {
-            anchors.fill: parent
-            currentIndex: appWindow.stackIndex
+        currentIndex: appWindow.stackIndex
 
-            SystemPage {}
-            WorkInProgress {}
-        }
+        SystemPage {}
+        WorkInProgress {}
+        WorkInProgress {}
+        WorkInProgress {}
     }
 }

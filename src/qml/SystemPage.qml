@@ -10,6 +10,7 @@ Item {
 
     RowLayout {
         anchors.fill: parent
+        spacing: Kirigami.Units.gridUnit
 
         Controls.ButtonGroup {
             id: buttonGroup
@@ -41,6 +42,10 @@ Item {
             Item {
                 Layout.fillHeight: true
             }
+        }
+
+        Kirigami.Separator {
+            Layout.fillHeight: true
         }
 
         StackLayout {
