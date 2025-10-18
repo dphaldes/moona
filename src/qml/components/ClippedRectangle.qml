@@ -13,7 +13,8 @@ Rectangle {
 
         layer.enabled: GraphicsInfo.api !== GraphicsInfo.Software
         layer.effect: Kirigami.ShadowedTexture {
-            radius: rect.radius - rect.border.radius
+            radius: Kirigami.Units.cornerRadius - rect.border.width
+            color: "transparent"
         }
 
         clip: true

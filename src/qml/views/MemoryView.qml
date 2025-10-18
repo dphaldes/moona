@@ -37,128 +37,126 @@ Item {
         ColumnLayout {
             spacing: Kirigami.Units.mediumSpacing
 
-            Charts.LineChart {
-
-                fillOpacity: 0.5
-                lineWidth: 1
-                smooth: true
-                stacked: false
-                direction: Charts.XYChart.ZeroAtEnd
+            ClippedRectangle {
+                color: "transparent"
+                radius: Kirigami.Units.cornerRadius
 
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 implicitHeight: 60
 
-                valueSources: [
-                    Charts.HistoryProxySource {
-                        interval: DataProvider.memoryUsedModel.updateRateLimit
-                        maximumHistory: 60
-                        fillMode: Charts.HistoryProxySource.FillFromEnd
+                border {
+                    color: Kirigami.Theme.highlightColor
+                    width: 1
+                }
 
-                        source: Charts.ModelSource {
-                            model: DataProvider.memoryUsedModel
-                            roleName: "Value"
+                Charts.LineChart {
+                    anchors.fill: parent
+
+                    fillOpacity: 0.5
+                    lineWidth: 1
+                    smooth: true
+                    stacked: false
+                    direction: Charts.XYChart.ZeroAtEnd
+
+                    valueSources: [
+                        Charts.HistoryProxySource {
+                            interval: DataProvider.memoryUsedModel.updateRateLimit
+                            maximumHistory: 60
+                            fillMode: Charts.HistoryProxySource.FillFromEnd
+
+                            source: Charts.ModelSource {
+                                model: DataProvider.memoryUsedModel
+                                roleName: "Value"
+                            }
                         }
+                    ]
+
+                    colorSource: Charts.SingleValueSource {
+                        value: Kirigami.Theme.highlightColor
                     }
-                ]
 
-                colorSource: Charts.SingleValueSource {
-                    value: Kirigami.Theme.highlightColor
-                }
+                    Charts.GridLines {
+                        z: -1
+                        anchors.fill: parent
+                        direction: Charts.GridLines.Horizontal
+                        major.visible: false
+                        minor.color: Kirigami.Theme.alternateBackgroundColor
+                        minor.count: 5
+                    }
 
-                Charts.GridLines {
-                    z: -1
-                    anchors.fill: parent
-                    direction: Charts.GridLines.Horizontal
-                    major.visible: false
-                    minor.color: Kirigami.Theme.alternateBackgroundColor
-                    minor.count: 5
-                }
-
-                Charts.GridLines {
-                    z: -1
-                    anchors.fill: parent
-                    direction: Charts.GridLines.Vertical
-                    major.visible: false
-                    minor.color: Kirigami.Theme.alternateBackgroundColor
-                    minor.count: 5
-                }
-
-                Rectangle {
-                    z: 1
-                    color: "transparent"
-                    anchors.fill: parent
-                    radius: 5
-
-                    border {
-                        color: Kirigami.Theme.highlightColor
-                        width: 1
+                    Charts.GridLines {
+                        z: -1
+                        anchors.fill: parent
+                        direction: Charts.GridLines.Vertical
+                        major.visible: false
+                        minor.color: Kirigami.Theme.alternateBackgroundColor
+                        minor.count: 5
                     }
                 }
             }
 
-            Charts.LineChart {
-                fillOpacity: 0.5
-                lineWidth: 1
-                smooth: true
-                stacked: false
-                direction: Charts.XYChart.ZeroAtEnd
-
+            ClippedRectangle {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 implicitHeight: 60
 
-                valueSources: [
-                    Charts.HistoryProxySource {
-                        interval: DataProvider.swapUsedModel.updateRateLimit
-                        maximumHistory: 60
-                        fillMode: Charts.HistoryProxySource.FillFromEnd
+                color: "transparent"
+                radius: Kirigami.Units.cornerRadius
 
-                        source: Charts.ModelSource {
-                            model: DataProvider.swapUsedModel
-                            roleName: "Value"
+                border {
+                    color: Kirigami.Theme.highlightColor
+                    width: 1
+                }
+
+                Charts.LineChart {
+                    anchors.fill: parent
+                    fillOpacity: 0.5
+                    lineWidth: 1
+                    smooth: true
+                    stacked: false
+                    direction: Charts.XYChart.ZeroAtEnd
+
+                    valueSources: [
+                        Charts.HistoryProxySource {
+                            interval: DataProvider.swapUsedModel.updateRateLimit
+                            maximumHistory: 60
+                            fillMode: Charts.HistoryProxySource.FillFromEnd
+
+                            source: Charts.ModelSource {
+                                model: DataProvider.swapUsedModel
+                                roleName: "Value"
+                            }
                         }
+                    ]
+
+                    colorSource: Charts.SingleValueSource {
+                        value: Kirigami.Theme.highlightColor
                     }
-                ]
 
-                colorSource: Charts.SingleValueSource {
-                    value: Kirigami.Theme.highlightColor
-                }
+                    Charts.GridLines {
+                        z: -1
+                        anchors.fill: parent
+                        direction: Charts.GridLines.Horizontal
+                        major.visible: false
+                        minor.color: Kirigami.Theme.alternateBackgroundColor
+                        minor.count: 5
+                    }
 
-                Charts.GridLines {
-                    z: -1
-                    anchors.fill: parent
-                    direction: Charts.GridLines.Horizontal
-                    major.visible: false
-                    minor.color: Kirigami.Theme.alternateBackgroundColor
-                    minor.count: 5
-                }
-
-                Charts.GridLines {
-                    z: -1
-                    anchors.fill: parent
-                    direction: Charts.GridLines.Vertical
-                    major.visible: false
-                    minor.color: Kirigami.Theme.alternateBackgroundColor
-                    minor.count: 5
-                }
-
-                Rectangle {
-                    z: 1
-                    color: "transparent"
-                    anchors.fill: parent
-                    radius: 5
-
-                    border {
-                        color: Kirigami.Theme.highlightColor
-                        width: 1
+                    Charts.GridLines {
+                        z: -1
+                        anchors.fill: parent
+                        direction: Charts.GridLines.Vertical
+                        major.visible: false
+                        minor.color: Kirigami.Theme.alternateBackgroundColor
+                        minor.count: 5
                     }
                 }
             }
 
             ClippedRectangle {
                 color: "transparent"
-                radius: 5
+                radius: Kirigami.Units.cornerRadius
                 implicitHeight: 40
                 Layout.fillWidth: true
 

@@ -34,67 +34,66 @@ Item {
             }
         }
 
-        Charts.LineChart {
-            id: chart
-
-            property Sensors.SensorDataModel sensorModel: DataProvider.cpuAllUsageModel
-
-            fillOpacity: 0.5
-            lineWidth: 1
-            smooth: true
-            stacked: false
-            direction: Charts.XYChart.ZeroAtEnd
-            yRange.from: 0
-            yRange.to: 100
-
+        ClippedRectangle {
             Layout.fillWidth: true
             Layout.fillHeight: true
             implicitHeight: 200
 
-            valueSources: [
-                Charts.HistoryProxySource {
-                    interval: chart.sensorModel.updateRateLimit
-                    maximumHistory: 60
-                    fillMode: Charts.HistoryProxySource.FillFromEnd
+            color: "transparent"
+            radius: Kirigami.Units.cornerRadius
 
-                    source: Charts.ModelSource {
-                        model: chart.sensorModel
-                        roleName: "Value"
+            border {
+                color: Kirigami.Theme.highlightColor
+                width: 1
+            }
+
+            Charts.LineChart {
+                id: chart
+                anchors.fill: parent
+
+                property Sensors.SensorDataModel sensorModel: DataProvider.cpuAllUsageModel
+
+                fillOpacity: 0.5
+                lineWidth: 1
+                smooth: true
+                stacked: false
+                direction: Charts.XYChart.ZeroAtEnd
+                yRange.from: 0
+                yRange.to: 100
+
+                valueSources: [
+                    Charts.HistoryProxySource {
+                        interval: chart.sensorModel.updateRateLimit
+                        maximumHistory: 60
+                        fillMode: Charts.HistoryProxySource.FillFromEnd
+
+                        source: Charts.ModelSource {
+                            model: chart.sensorModel
+                            roleName: "Value"
+                        }
                     }
+                ]
+
+                colorSource: Charts.SingleValueSource {
+                    value: Kirigami.Theme.highlightColor
                 }
-            ]
 
-            colorSource: Charts.SingleValueSource {
-                value: Kirigami.Theme.highlightColor
-            }
+                Charts.GridLines {
+                    z: -1
+                    anchors.fill: parent
+                    direction: Charts.GridLines.Horizontal
+                    major.visible: false
+                    minor.color: Kirigami.Theme.alternateBackgroundColor
+                    minor.count: 5
+                }
 
-            Charts.GridLines {
-                z: -1
-                anchors.fill: parent
-                direction: Charts.GridLines.Horizontal
-                major.visible: false
-                minor.color: Kirigami.Theme.alternateBackgroundColor
-                minor.count: 5
-            }
-
-            Charts.GridLines {
-                z: -1
-                anchors.fill: parent
-                direction: Charts.GridLines.Vertical
-                major.visible: false
-                minor.color: Kirigami.Theme.alternateBackgroundColor
-                minor.count: 5
-            }
-
-            Rectangle {
-                z: 1
-                color: "transparent"
-                anchors.fill: parent
-                radius: 5
-
-                border {
-                    color: Kirigami.Theme.highlightColor
-                    width: 1
+                Charts.GridLines {
+                    z: -1
+                    anchors.fill: parent
+                    direction: Charts.GridLines.Vertical
+                    major.visible: false
+                    minor.color: Kirigami.Theme.alternateBackgroundColor
+                    minor.count: 5
                 }
             }
         }
