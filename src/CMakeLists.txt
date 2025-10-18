@@ -25,11 +25,16 @@ ecm_target_qml_sources(moona SOURCES
   qml/components/SensorLineChart.qml
 )
 
+qt_target_qml_sources(moona PREFIX / RESOURCES
+   assets/dot.svg
+)
+
 target_link_libraries(moona PRIVATE
   Qt6::Quick
   Qt6::Qml
   Qt6::Gui
   Qt6::QuickControls2
+  Qt6::Svg
   Qt6::Widgets
   KF6::I18n
   KF6::CoreAddons

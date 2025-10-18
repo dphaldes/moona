@@ -26,7 +26,7 @@ find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS
     Gui
     Quick
     QuickControls2
-    Test
+    Svg
     Widgets
 )
 

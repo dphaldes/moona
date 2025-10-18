@@ -174,6 +174,13 @@ Item {
                         Layout.preferredWidth: parent.width * (DataProvider.memoryApplication.value / DataProvider.memoryTotal.value)
                         color: "red"
                         opacity: 0.5
+
+                        Image {
+                            anchors.fill: parent
+                            source: "qrc:/assets/dot.svg"
+                            fillMode: Image.Tile
+                            sourceSize: Qt.size(10, 10)
+                        }
                     }
 
                     Rectangle {
