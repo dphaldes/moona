@@ -38,3 +38,5 @@ target_link_libraries(moona PRIVATE
   # KSysGuard::Sensors
   # KSysGuard::SensorFaces
 )
+
+install(TARGETS moona DESTINATION ${KDE_INSTALL_BINDDIR})

@@ -3,9 +3,19 @@ runtime: org.kde.Platform
 runtime-version: "6.9"
 sdk: org.kde.Sdk
 command: moona
+finish-args:
+  - --device=dri
+  - --env=QML_IMPORT_PATH=/app/qml
+  - --env=QT_PLUGIN_PATH=/app/plugins:/app/lib64/plugins:/app/lib/plugins:/usr/share/runtime/lib/plugins
+  - --share=ipc
+  - --share=network
+  - --socket=fallback-x11
+  - --socket=wayland
 modules:
   - name: libksysguard
     buildsystem: cmake-ninja
+    config-opts:
+      - -DENABLE_KAUTH_HELPER=OFF
     sources:
       - type: git
         url: https://invent.kde.org/plasma/libksysguard.git
