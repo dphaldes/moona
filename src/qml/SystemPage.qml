@@ -27,7 +27,7 @@ Item {
                 extra: DataProvider.cpuAllUsage.formattedValue + " (" + DataProvider.cpuAllTemp.formattedValue + ")"
                 checked: true
                 Controls.ButtonGroup.group: buttonGroup
-                onPressed: systempage.stackIndex = 0
+                onClicked: systempage.stackIndex = 0
             }
 
             SensorDelegate {
@@ -36,7 +36,7 @@ Item {
                 name: DataProvider.memoryUsed.formattedValue + " " + DataProvider.memoryTotal.formattedValue
                 extra: ""
                 Controls.ButtonGroup.group: buttonGroup
-                onPressed: systempage.stackIndex = 1
+                onClicked: systempage.stackIndex = 1
             }
 
             Item {
