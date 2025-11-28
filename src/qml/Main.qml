@@ -32,25 +32,25 @@ Kirigami.ApplicationWindow {
                 icon.name: "speedometer"
                 Controls.ButtonGroup.group: drawerGroup
                 checked: true
-                onPressed: appWindow.stackIndex = 0
+                onClicked: appWindow.stackIndex = 0
             }
             IconDelegate {
                 text: i18n("Applications")
                 icon.name: "applications-all-symbolic"
                 Controls.ButtonGroup.group: drawerGroup
-                onPressed: appWindow.stackIndex = 1
+                onClicked: appWindow.stackIndex = 1
             }
             IconDelegate {
                 text: i18n("Processes")
                 icon.name: "view-process-system-symbolic"
                 Controls.ButtonGroup.group: drawerGroup
-                onPressed: appWindow.stackIndex = 2
+                onClicked: appWindow.stackIndex = 2
             }
             IconDelegate {
                 text: i18n("Services")
                 icon.name: "emblem-system-symbolic"
                 Controls.ButtonGroup.group: drawerGroup
-                onPressed: appWindow.stackIndex = 3
+                onClicked: appWindow.stackIndex = 3
             }
 
             Item {
