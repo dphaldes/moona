@@ -23,7 +23,7 @@ Item {
             SensorDelegate {
                 sensorModel: DataProvider.cpuAllUsageModel
                 type: i18n("CPU")
-                name: DataProvider.cpuName
+                name: SolidDataProvider.cpuName
                 extra: DataProvider.cpuAllUsage.formattedValue + " (" + DataProvider.cpuAllTemp.formattedValue + ")"
                 checked: true
                 Controls.ButtonGroup.group: buttonGroup
@@ -34,6 +34,15 @@ Item {
                 sensorModel: DataProvider.memoryUsedModel
                 type: i18n("Memory")
                 name: DataProvider.memoryUsed.formattedValue + " " + DataProvider.memoryTotal.formattedValue
+                extra: ""
+                Controls.ButtonGroup.group: buttonGroup
+                onPressed: systempage.stackIndex = 1
+            }
+
+            SensorDelegate {
+                sensorModel: DataProvider.gpuUsageModel
+                type: i18n("GPU")
+                name: "lmaoe"
                 extra: ""
                 Controls.ButtonGroup.group: buttonGroup
                 onPressed: systempage.stackIndex = 1

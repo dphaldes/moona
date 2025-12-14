@@ -26,8 +26,6 @@ Item {
         updateRateLimit: 1000
     }
 
-    readonly property string cpuName: SolidProvider.cpuName
-
     readonly property Sensor memoryUsed: Sensor {
         sensorId: "memory/physical/used"
         updateRateLimit: 1000
@@ -68,6 +66,11 @@ Item {
 
     readonly property SensorDataModel swapUsedModel: SensorDataModel {
         sensors: ["memory/swap/used"]
+        updateRateLimit: 1000
+    }
+
+    readonly property SensorDataModel gpuUsageModel: SensorDataModel {
+        sensors: ["gpu/gpu\\\\d+/usage"]
         updateRateLimit: 1000
     }
 }

@@ -29,7 +29,7 @@ Item {
             }
 
             Kirigami.Heading {
-                text: DataProvider.cpuName
+                text: SolidDataProvider.cpuName
                 level: 2
             }
         }

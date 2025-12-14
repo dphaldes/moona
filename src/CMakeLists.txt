@@ -6,8 +6,8 @@ ecm_add_qml_module(moona
 
 target_sources(moona PRIVATE
   main.cpp
-  SolidProvider.h
-  SolidProvider.cpp
+  SolidDataProvider.h
+  SolidDataProvider.cpp
 )
 
 set_source_files_properties(qml/DataProvider.qml PROPERTIES QT_QML_SINGLETON_TYPE TRUE)

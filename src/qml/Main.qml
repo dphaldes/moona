@@ -18,6 +18,7 @@ Kirigami.ApplicationWindow {
         modal: false
         width: Kirigami.Units.gridUnit * 8
         handleVisible: false
+        Kirigami.Theme.colorSet: Kirigami.Theme.Header
 
         Controls.ButtonGroup {
             id: drawerGroup

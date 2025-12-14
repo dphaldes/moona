@@ -5,11 +5,11 @@
 #include <QtQml/qqmlregistration.h>
 #include <qqmlintegration.h>
 
-class SolidProvider : public QObject {
+class SolidDataProvider : public QObject {
   Q_OBJECT
   QML_ELEMENT
   QML_SINGLETON
-  Q_PROPERTY(QString cpuName READ cpuName)
+  Q_PROPERTY(QString cpuName READ cpuName CONSTANT)
 
 public:
   auto cpuName() -> QString;
