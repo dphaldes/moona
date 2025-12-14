@@ -34,70 +34,32 @@ Item {
             }
         }
 
-        ClippedRectangle {
+        SensorLineChart {
             Layout.fillWidth: true
             Layout.fillHeight: true
             implicitHeight: 200
 
-            color: "transparent"
-            radius: Kirigami.Units.cornerRadius
+            sensor: DataProvider.cpuAllUsage
+            highlightColor: Kirigami.Theme.highlightColor
 
-            border {
-                color: Kirigami.Theme.highlightColor
-                width: 1
+            chart.lineWidth: 1
+
+            Charts.GridLines {
+                z: -1
+                anchors.fill: parent
+                direction: Charts.GridLines.Horizontal
+                major.visible: false
+                minor.color: Kirigami.Theme.alternateBackgroundColor
+                minor.count: 5
             }
 
-            Charts.LineChart {
-                id: chart
+            Charts.GridLines {
+                z: -1
                 anchors.fill: parent
-
-                property Sensors.Sensor sensor: DataProvider.cpuAllUsage
-
-                fillOpacity: 0.5
-                lineWidth: 1
-                smooth: true
-                stacked: false
-                direction: Charts.XYChart.ZeroAtEnd
-                
-                yRange {
-                    automatic: false
-                    from: chart.sensor.minimum
-                    to: chart.sensor.maximum
-                }
-
-                valueSources: [
-                    Charts.HistoryProxySource {
-                        interval: chart.sensor.updateRateLimit
-                        maximumHistory: 60
-                        fillMode: Charts.HistoryProxySource.FillFromEnd
-
-                        source: Charts.SingleValueSource {
-                            value: chart.sensor.value
-                        }
-                    }
-                ]
-
-                colorSource: Charts.SingleValueSource {
-                    value: Kirigami.Theme.highlightColor
-                }
-
-                Charts.GridLines {
-                    z: -1
-                    anchors.fill: parent
-                    direction: Charts.GridLines.Horizontal
-                    major.visible: false
-                    minor.color: Kirigami.Theme.alternateBackgroundColor
-                    minor.count: 5
-                }
-
-                Charts.GridLines {
-                    z: -1
-                    anchors.fill: parent
-                    direction: Charts.GridLines.Vertical
-                    major.visible: false
-                    minor.color: Kirigami.Theme.alternateBackgroundColor
-                    minor.count: 5
-                }
+                direction: Charts.GridLines.Vertical
+                major.visible: false
+                minor.color: Kirigami.Theme.alternateBackgroundColor
+                minor.count: 5
             }
         }
 
@@ -106,7 +68,7 @@ Item {
 
             RowLayout {
                 spacing: Kirigami.Units.largeSpacing
-                
+
                 Kirigami.TitleSubtitle {
                     title: DataProvider.cpuAllUsage.formattedValue
                     subtitle: i18n("Utilization")

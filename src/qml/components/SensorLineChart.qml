@@ -26,6 +26,8 @@ ClippedRectangle {
     required property Sensors.Sensor sensor
     required property var highlightColor
     readonly property int historyAmount: 60 // TODO
+    
+    property alias chart: chart
 
     Charts.LineChart {
         id: chart

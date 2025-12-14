@@ -37,137 +37,59 @@ Item {
         ColumnLayout {
             spacing: Kirigami.Units.mediumSpacing
 
-            ClippedRectangle {
-                color: "transparent"
-                radius: Kirigami.Units.cornerRadius
-
+            SensorLineChart {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 implicitHeight: 60
 
-                border {
-                    color: Kirigami.Theme.highlightColor
-                    width: 1
+                sensor: DataProvider.memoryUsed
+                highlightColor: Kirigami.Theme.highlightColor
+                chart.lineWidth: 1
+
+                Charts.GridLines {
+                    z: -1
+                    anchors.fill: parent
+                    direction: Charts.GridLines.Horizontal
+                    major.visible: false
+                    minor.color: Kirigami.Theme.alternateBackgroundColor
+                    minor.count: 5
                 }
 
-                Charts.LineChart {
-                    id: memUsed
+                Charts.GridLines {
+                    z: -1
                     anchors.fill: parent
-
-                    property Sensors.Sensor sensor: DataProvider.memoryUsed
-
-                    fillOpacity: 0.5
-                    lineWidth: 1
-                    smooth: true
-                    stacked: false
-                    direction: Charts.XYChart.ZeroAtEnd
-
-                    yRange {
-                        automatic: false
-                        from: sensor.minimum
-                        to: sensor.maximum
-                    }
-
-                    valueSources: [
-                        Charts.HistoryProxySource {
-                            interval: memUsed.sensor.updateRateLimit
-                            maximumHistory: 60
-                            fillMode: Charts.HistoryProxySource.FillFromEnd
-
-                            source: Charts.SingleValueSource {
-                                value: memUsed.sensor.value
-                            }
-                        }
-                    ]
-
-                    colorSource: Charts.SingleValueSource {
-                        value: Kirigami.Theme.highlightColor
-                    }
-
-                    Charts.GridLines {
-                        z: -1
-                        anchors.fill: parent
-                        direction: Charts.GridLines.Horizontal
-                        major.visible: false
-                        minor.color: Kirigami.Theme.alternateBackgroundColor
-                        minor.count: 5
-                    }
-
-                    Charts.GridLines {
-                        z: -1
-                        anchors.fill: parent
-                        direction: Charts.GridLines.Vertical
-                        major.visible: false
-                        minor.color: Kirigami.Theme.alternateBackgroundColor
-                        minor.count: 5
-                    }
+                    direction: Charts.GridLines.Vertical
+                    major.visible: false
+                    minor.color: Kirigami.Theme.alternateBackgroundColor
+                    minor.count: 5
                 }
             }
 
-            ClippedRectangle {
+            SensorLineChart {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 implicitHeight: 60
 
-                color: "transparent"
-                radius: Kirigami.Units.cornerRadius
+                sensor: DataProvider.swapUsed
+                highlightColor: Kirigami.Theme.highlightColor
+                chart.lineWidth: 1
 
-                border {
-                    color: Kirigami.Theme.highlightColor
-                    width: 1
+                Charts.GridLines {
+                    z: -1
+                    anchors.fill: parent
+                    direction: Charts.GridLines.Horizontal
+                    major.visible: false
+                    minor.color: Kirigami.Theme.alternateBackgroundColor
+                    minor.count: 5
                 }
 
-                Charts.LineChart {
-                    id: swapUsed
+                Charts.GridLines {
+                    z: -1
                     anchors.fill: parent
-
-                    property Sensors.Sensor sensor: DataProvider.swapUsed
-
-                    fillOpacity: 0.5
-                    lineWidth: 1
-                    smooth: true
-                    stacked: false
-                    direction: Charts.XYChart.ZeroAtEnd
-
-                    yRange {
-                        automatic: false
-                        from: sensor.minimum
-                        to: sensor.maximum
-                    }
-
-                    valueSources: [
-                        Charts.HistoryProxySource {
-                            interval: swapUsed.sensor.updateRateLimit
-                            maximumHistory: 60
-                            fillMode: Charts.HistoryProxySource.FillFromEnd
-
-                            source: Charts.SingleValueSource {
-                                value: memUsed.sensor.value
-                            }
-                        }
-                    ]
-
-                    colorSource: Charts.SingleValueSource {
-                        value: Kirigami.Theme.highlightColor
-                    }
-
-                    Charts.GridLines {
-                        z: -1
-                        anchors.fill: parent
-                        direction: Charts.GridLines.Horizontal
-                        major.visible: false
-                        minor.color: Kirigami.Theme.alternateBackgroundColor
-                        minor.count: 5
-                    }
-
-                    Charts.GridLines {
-                        z: -1
-                        anchors.fill: parent
-                        direction: Charts.GridLines.Vertical
-                        major.visible: false
-                        minor.color: Kirigami.Theme.alternateBackgroundColor
-                        minor.count: 5
-                    }
+                    direction: Charts.GridLines.Vertical
+                    major.visible: false
+                    minor.color: Kirigami.Theme.alternateBackgroundColor
+                    minor.count: 5
                 }
             }
 
