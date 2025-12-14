@@ -13,7 +13,7 @@ Delegates.RoundedItemDelegate {
 
     Layout.fillWidth: true
 
-    required property Sensors.SensorDataModel sensorModel
+    required property Sensors.Sensor sensor
     required property string type
     required property string name
     required property string extra
@@ -25,7 +25,7 @@ Delegates.RoundedItemDelegate {
 
         SensorLineChart {
             id: chart
-            sensorModel: delegate.sensorModel
+            sensor: delegate.sensor
 
             implicitWidth: 120
             implicitHeight: 80

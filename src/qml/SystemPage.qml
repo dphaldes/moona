@@ -21,7 +21,7 @@ Item {
             spacing: 0
 
             SensorDelegate {
-                sensorModel: DataProvider.cpuAllUsageModel
+                sensor: DataProvider.cpuAllUsage
                 type: i18n("CPU")
                 name: SolidDataProvider.cpuName
                 extra: DataProvider.cpuAllUsage.formattedValue + " (" + DataProvider.cpuAllTemp.formattedValue + ")"
@@ -31,7 +31,7 @@ Item {
             }
 
             SensorDelegate {
-                sensorModel: DataProvider.memoryUsedModel
+                sensor: DataProvider.memoryUsed
                 type: i18n("Memory")
                 name: DataProvider.memoryUsed.formattedValue + " " + DataProvider.memoryTotal.formattedValue
                 extra: ""
@@ -39,14 +39,14 @@ Item {
                 onPressed: systempage.stackIndex = 1
             }
 
-            SensorDelegate {
-                sensorModel: DataProvider.gpuUsageModel
-                type: i18n("GPU")
-                name: "lmaoe"
-                extra: ""
-                Controls.ButtonGroup.group: buttonGroup
-                onPressed: systempage.stackIndex = 1
-            }
+            // SensorDelegate {
+            //     sensorModel: DataProvider.gpuUsageModel
+            //     type: i18n("GPU")
+            //     name: "lmaoe"
+            //     extra: ""
+            //     Controls.ButtonGroup.group: buttonGroup
+            //     onPressed: systempage.stackIndex = 1
+            // }
 
             Item {
                 Layout.fillHeight: true

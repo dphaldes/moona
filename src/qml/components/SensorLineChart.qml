@@ -23,7 +23,7 @@ ClippedRectangle {
         width: 1
     }
 
-    required property Sensors.SensorDataModel sensorModel
+    required property Sensors.Sensor sensor
     required property var highlightColor
     readonly property int historyAmount: 60 // TODO
 
@@ -38,8 +38,9 @@ ClippedRectangle {
         direction: Charts.XYChart.ZeroAtEnd
 
         yRange {
-            from: 0
-            to: 100
+            automatic: false
+            from: root.sensor.minimum
+            to: root.sensor.maximum
         }
 
         colorSource: Charts.SingleValueSource {
@@ -48,13 +49,12 @@ ClippedRectangle {
 
         valueSources: [
             Charts.HistoryProxySource {
-                interval: root.sensorModel.updateRateLimit
+                interval: root.sensor.updateRateLimit
                 maximumHistory: 60
                 fillMode: Charts.HistoryProxySource.FillFromEnd
 
-                source: Charts.ModelSource {
-                    model: root.sensorModel
-                    roleName: "Value"
+                source: Charts.SingleValueSource {
+                    value: root.sensor.value
                 }
             }
         ]

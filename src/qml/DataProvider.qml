@@ -11,11 +11,6 @@ Item {
         updateRateLimit: 1000
     }
 
-    readonly property SensorDataModel cpuAllUsageModel: SensorDataModel {
-        sensors: ["cpu/all/usage"]
-        updateRateLimit: 1000
-    }
-
     readonly property Sensor cpuAllFrequency: Sensor {
         sensorId: "cpu/all/averageFrequency"
         updateRateLimit: 1000
@@ -50,11 +45,6 @@ Item {
         sensorId: "memory/physical/total" // doesnt really need to update
     }
 
-    readonly property SensorDataModel memoryUsedModel: SensorDataModel {
-        sensors: ["memory/physical/used"]
-        updateRateLimit: 1000
-    }
-
     readonly property Sensor swapUsed: Sensor {
         sensorId: "memory/swap/used"
         updateRateLimit: 1000
@@ -64,13 +54,8 @@ Item {
         sensorId: "memory/swap/total" // doesnt really need to update
     }
 
-    readonly property SensorDataModel swapUsedModel: SensorDataModel {
-        sensors: ["memory/swap/used"]
-        updateRateLimit: 1000
-    }
-
-    readonly property SensorDataModel gpuUsageModel: SensorDataModel {
-        sensors: ["gpu/gpu\\\\d+/usage"]
-        updateRateLimit: 1000
-    }
+    // readonly property SensorDataModel gpuUsageModel: SensorDataModel {
+    //     sensors: ["gpu/gpu\\\\d+/usage"]
+    //     updateRateLimit: 1000
+    // }
 }

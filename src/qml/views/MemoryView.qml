@@ -51,7 +51,10 @@ Item {
                 }
 
                 Charts.LineChart {
+                    id: memUsed
                     anchors.fill: parent
+
+                    property Sensors.Sensor sensor: DataProvider.memoryUsed
 
                     fillOpacity: 0.5
                     lineWidth: 1
@@ -59,15 +62,20 @@ Item {
                     stacked: false
                     direction: Charts.XYChart.ZeroAtEnd
 
+                    yRange {
+                        automatic: false
+                        from: sensor.minimum
+                        to: sensor.maximum
+                    }
+
                     valueSources: [
                         Charts.HistoryProxySource {
-                            interval: DataProvider.memoryUsedModel.updateRateLimit
+                            interval: memUsed.sensor.updateRateLimit
                             maximumHistory: 60
                             fillMode: Charts.HistoryProxySource.FillFromEnd
 
-                            source: Charts.ModelSource {
-                                model: DataProvider.memoryUsedModel
-                                roleName: "Value"
+                            source: Charts.SingleValueSource {
+                                value: memUsed.sensor.value
                             }
                         }
                     ]
@@ -110,22 +118,31 @@ Item {
                 }
 
                 Charts.LineChart {
+                    id: swapUsed
                     anchors.fill: parent
+
+                    property Sensors.Sensor sensor: DataProvider.swapUsed
+
                     fillOpacity: 0.5
                     lineWidth: 1
                     smooth: true
                     stacked: false
                     direction: Charts.XYChart.ZeroAtEnd
 
+                    yRange {
+                        automatic: false
+                        from: sensor.minimum
+                        to: sensor.maximum
+                    }
+
                     valueSources: [
                         Charts.HistoryProxySource {
-                            interval: DataProvider.swapUsedModel.updateRateLimit
+                            interval: swapUsed.sensor.updateRateLimit
                             maximumHistory: 60
                             fillMode: Charts.HistoryProxySource.FillFromEnd
 
-                            source: Charts.ModelSource {
-                                model: DataProvider.swapUsedModel
-                                roleName: "Value"
+                            source: Charts.SingleValueSource {
+                                value: memUsed.sensor.value
                             }
                         }
                     ]

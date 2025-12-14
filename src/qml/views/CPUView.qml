@@ -51,25 +51,28 @@ Item {
                 id: chart
                 anchors.fill: parent
 
-                property Sensors.SensorDataModel sensorModel: DataProvider.cpuAllUsageModel
+                property Sensors.Sensor sensor: DataProvider.cpuAllUsage
 
                 fillOpacity: 0.5
                 lineWidth: 1
                 smooth: true
                 stacked: false
                 direction: Charts.XYChart.ZeroAtEnd
-                yRange.from: 0
-                yRange.to: 100
+                
+                yRange {
+                    automatic: false
+                    from: chart.sensor.minimum
+                    to: chart.sensor.maximum
+                }
 
                 valueSources: [
                     Charts.HistoryProxySource {
-                        interval: chart.sensorModel.updateRateLimit
+                        interval: chart.sensor.updateRateLimit
                         maximumHistory: 60
                         fillMode: Charts.HistoryProxySource.FillFromEnd
 
-                        source: Charts.ModelSource {
-                            model: chart.sensorModel
-                            roleName: "Value"
+                        source: Charts.SingleValueSource {
+                            value: chart.sensor.value
                         }
                     }
                 ]
