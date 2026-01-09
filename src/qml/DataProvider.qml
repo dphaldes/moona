@@ -53,6 +53,8 @@ Item {
     readonly property Sensor swapTotal: Sensor {
         sensorId: "memory/swap/total" // doesnt really need to update
     }
+    
+    readonly property GpuDataProvider prov: GpuDataProvider
 
     // readonly property SensorDataModel gpuUsageModel: SensorDataModel {
     //     sensors: ["gpu/gpu\\\\d+/usage"]

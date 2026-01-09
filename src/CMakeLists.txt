@@ -8,6 +8,8 @@ target_sources(moona PRIVATE
   main.cpp
   SolidDataProvider.h
   SolidDataProvider.cpp
+  GpuDataProvider.h
+  GpuDataProvider.cpp
 )
 
 set_source_files_properties(qml/DataProvider.qml PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
@@ -35,7 +37,7 @@ target_link_libraries(moona PRIVATE
   KF6::CoreAddons
   KF6::IconThemes
   KF6::Solid
-  # KSysGuard::Sensors
+  KSysGuard::Sensors
   # KSysGuard::SensorFaces
 )
 

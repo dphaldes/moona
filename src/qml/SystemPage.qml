@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Controls as Controls
 import QtQuick.Layouts
 import org.kde.kirigami as Kirigami
+import org.kde.ksysguard.sensors as Sensors
 
 Item {
     id: systempage
@@ -38,6 +39,21 @@ Item {
                 Controls.ButtonGroup.group: buttonGroup
                 onPressed: systempage.stackIndex = 1
             }
+            
+            // Repeater {
+            //     model: GpuDataProvider.gpus
+                
+            //     SensorDelegate {
+            //         required property Sensors.SensorDataModel sensorModel
+            //         sensor: sensorModel
+            //         type: i18n("GPU")
+            //         name: "HAHAHAH"
+            //         extra: ""
+            //         Controls.ButtonGroup.group: buttonGroup
+            //         // onPressed: systempage.stackIndex = 1
+            //     }
+                
+            // }
 
             // SensorDelegate {
             //     sensorModel: DataProvider.gpuUsageModel
